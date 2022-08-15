@@ -76,7 +76,7 @@ useEffect(() => {
                {user ? (
               <>
                  <Link  to={'#'} onClick={()=>{localStorage.removeItem('token');dispatch(setUser(null));window.location.reload()}}>
-                      <img src={imgurl+user.profileImg} alt={process.env.PUBLIC_URL+'/images/client.png'} style={{height:'30px',width:'25px',borderRadius:'10px',border:'2px groove #00ffff'}}/>
+                      <img src={imgurl+user.profileImg} alt={process.env.PUBLIC_URL +'/images/user.png'} style={{height:'30px',width:'25px',borderRadius:'10px',border:'2px groove #00ffff'}}/>
                     <span>
                      {user.username}
                     </span>

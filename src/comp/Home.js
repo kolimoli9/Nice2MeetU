@@ -13,17 +13,7 @@ const Home = () => {
   const imgurl = useSelector(selectUrl)
   const user = useSelector(selectUser)
   const nav = useNavigate()
-  useEffect(() => {
-  async function getFeed(){
-    axios.get('https://n2mu-server.herokuapp.com/feed/',config).then((response)=>{
-      dispatch(setFeed(response.data))
-    }).catch((error)=>{console.log(error)})
-  };
-  if(Feed.length===0){
-    getFeed();
-  } 
-}, [config,Feed,dispatch]);
-
+  
 
 const getLike=async(post)=>{
     let data = JSON.stringify({
@@ -149,32 +139,31 @@ useEffect(()=>{
         {commentsPost.map((comment,index)=>{
           return(
       <div className="container mt-0" key={index}>
-      <div className="d-flex justify-content-left row">
-      <div className="col-md-10">
+      <div className="d-flex justify-content-left row" style={{display:'strech',alignItems:'left'}}>
+      <div className="col-md-10" >
       <div className="d-flex flex-column comment-section">
-      <div className="bg-white p-2">
+      <div className="bg-white p-2" >
       <div className="d-flex flex-row user-info"><img className="rounded-circle" src={imgurl+comment._user_img} alt='' width="40"/>
       <div className="d-flex flex-column justify-content-start ml-2"><span className="d-block font-weight-bold name">{comment._username}</span><span className="date text-black-50"></span></div>
       </div>
-      <div className="mt-2">
-      <p className="comment-text" style={{paddingLeft:20}}>{comment._content}</p>
+      <div className="alert alert-secondary" style={{padding:'0',paddingTop:'10',borderRadius:'10%'}} >
+      <p className="comment-text" >{comment._content}</p>
       </div></div></div></div></div></div>
           )
         })}
         </>
       ):(
-        'Be The First One To Comment On This Post!'
+        <>Be The First One To Comment On This Post!</>
       )}
-
 
       </div>
       <div className="modal-footer">
-      <div className="bg-light p-2" style={{position:'relative',left:'-30%',maxWidth:'100%',width:'auto'}}>
-        
+        <div className='container' style={{display:'strech'}}>
+      <div className="bg-light p-2" style={{maxWidth:'100%',width:'auto'}}>
       <div className="d-flex flex-row align-items-start">{user ? (<img className="rounded-circle" src={imgurl+user.profileImg} alt='' width="40"/>):(<img className="rounded-circle" src={process.env.PUBLIC_URL+'/images/user.png'} alt='' width="40"/>)}<textarea className="form-control ml-1 shadow-none textarea"></textarea></div>
       <div className="mt-2 text-right"><button className="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button className="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button" data-dismiss="modal">Cancel</button></div>
       </div>
-      </div>
+      </div></div>
     </div>
   </div>
 </div>
@@ -253,16 +242,15 @@ useEffect(()=>{
                 </div>
                 <img src= {imgurl+post.img} style={{display:'block',maxHeight:'500px',maxWidth:'50%',height:'auto',width:'auto',position:'relative',left:' 20%'}} className="card-img-bottom" alt="..."/>
                 <div className='container' style={{position:'relative',top: '89%', left: '0%'}}>
-                <div className="bg-black" style={{color:'white'}}>
-                  <div className="d-flex flex-row fs-12">
+                <div className="bg-black" style={{color:'white',borderRadius:'15px'}}>
+                  <div className="d-flex flex-row fs-12" >
                   <div className="like p-2 cursor" onClick={()=>{getLike(post);}}><i className="fa fa-thumbs-o-up" ></i><span className="ml-1">Like</span><input style={
                     {maxWidth:'30px',
                     width:'auto',
                     background:'black',
                     border:'none',
                     position:'relative',
-                    left:'20%',
-                    color:' #0066ff'
+                    color:' #0066ff',
                           }} disabled type={'text'} defaultValue={Number(post.likes)} id={post.id}></input></div>
                   {user ? (<div className="like p-2 cursor"><i className="fa fa-commenting-o"></i><span className="ml-1" data-toggle="modal" data-target="#Comments" onClick={()=>{dispatch(setPostID(post.id)); }}>Comment</span></div>):(<div className="like p-2 cursor"><i className="fa fa-commenting-o"></i><span className="ml-1" data-toggle="modal" data-target="#Comments" onClick={()=>{alert('You Need to login/register to comment');nav('/login') }}>Comment</span></div>)}
                   <div className="like p-2 cursor"><i className="fa fa-share"></i><span className="ml-1">Share</span></div>

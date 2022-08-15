@@ -28,11 +28,8 @@ const login = async()=>{
       };
       dispatch(setUser(user));
       nav('/')
-    }else{
-      alert('One or more fields are incorrect.')
-      window.location.reload()
     }
-    })
+    }).catch((error)=>alert(error+'\n Check Username/Password and try again !'))
 };
 // Register
   const [Username, setUsername] = useState('')
@@ -49,9 +46,9 @@ const register = async()=>{
   let config = {headers:{'Content-Type':'multipart/form-data'}}
   axios.post('https://n2mu-server.herokuapp.com/register/',data,config).then((response)=>{if(response.status===200){
     alert(response.data.output+'\nYou can Login now.')
-    window.location.reload()
+    window.location.href='/login'
     
-  }})
+  }}).catch((error)=>alert(error))
 }
 
 

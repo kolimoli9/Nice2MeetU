@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet , Link } from 'react-router-dom';
 import { selectUser, setUser } from '../Slicers/userSlicer';
-import {selectUrl} from '../Slicers/configSlicer';
+import {selectConfig1, selectUrl} from '../Slicers/configSlicer';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
+import { selectFeed, setFeed } from '../Slicers/feedSlicer';
 const Nav = () => {
   const imgurl = useSelector(selectUrl);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
- 
+  const Feed = useSelector(selectFeed)
+  const config = useSelector(selectConfig1)
+useEffect(() => {
+    async function getFeed(){
+      axios.get('https://n2mu-server.herokuapp.com/feed/',config).then((response)=>{
+        console.log('requested')
+        dispatch(setFeed(response.data))
+      }).catch((error)=>{console.log(error)})
+    };
+    if(Feed.length===0){
+      getFeed();
+    } 
+}, [config,Feed,dispatch]);
   
   return (
 <div className="hero_area">  

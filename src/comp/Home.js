@@ -30,10 +30,8 @@ const getLike=async(post)=>{
       post_id:post.id,
     })
     axios.put('https://n2mu-server.herokuapp.com/like/',data,config).then((response)=>{
-      console.log(response)
       }).then(()=>{
         let likesCount =  Number(document.getElementById(post.id).value);
-        console.log(typeof likesCount);
         let Nvalue = likesCount +1
         document.getElementById(post.id).value=Nvalue
         });
@@ -81,9 +79,7 @@ function PreviewImage() {
 useEffect(()=>{
    function getComments(){
     const selectedFew = []
-    console.log('postID :',postID)
     AllComments.forEach((comment)=>{
-      console.log('Comment :',comment)
       if(comment.post===postID){
         selectedFew.push(comment)
       }

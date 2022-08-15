@@ -111,7 +111,7 @@ const register = async()=>{
                     <div className="card-body p-md-5 mx-md-4">
       
                       <div className="text-center">
-                        <img src={process.env.PUBLIC_URL+'images/logo.png'}
+                        <img src={process.env.PUBLIC_URL+'/images/logo.png'}
                           style={{width: '155px', border: '2px solid white',borderRadius: '50px'}} alt="logo"/>
                         <h4 className="mt-1 mb-5 pb-1">Nice 2 Meet U !</h4>
                       </div>

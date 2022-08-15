@@ -1,7 +1,6 @@
 import React from 'react'
 
 const PageNotFound = () => {
-    console.log(window.location)
     console.log(window.location.pathname)
   return (
     <div>PageNotFound

@@ -97,7 +97,7 @@ useEffect(()=>{
 },[dispatch,AllComments,postID])      
     
 // Testing mp3
-// const player = new Audio(process.env.PUBLIC_URL+'images/test.mp3')
+// const player = new Audio(process.env.PUBLIC_URL+'/images/test.mp3')
 
 
   return (
@@ -175,7 +175,7 @@ useEffect(()=>{
       <div className="modal-footer">
       <div className="bg-light p-2" style={{position:'relative',left:'-30%',maxWidth:'100%',width:'auto'}}>
         
-      <div className="d-flex flex-row align-items-start">{user ? (<img className="rounded-circle" src={imgurl+user.profileImg} alt='' width="40"/>):(<img className="rounded-circle" src={process.env.PUBLIC_URL+'images/user.png'} alt='' width="40"/>)}<textarea className="form-control ml-1 shadow-none textarea"></textarea></div>
+      <div className="d-flex flex-row align-items-start">{user ? (<img className="rounded-circle" src={imgurl+user.profileImg} alt='' width="40"/>):(<img className="rounded-circle" src={process.env.PUBLIC_URL+'/images/user.png'} alt='' width="40"/>)}<textarea className="form-control ml-1 shadow-none textarea"></textarea></div>
       <div className="mt-2 text-right"><button className="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button className="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button" data-dismiss="modal">Cancel</button></div>
       </div>
       </div>
@@ -203,7 +203,7 @@ useEffect(()=>{
               by clicking "buy" you will be gifted with a video of a scraming goats.            
             </p>
             <div>
-              <a href={process.env.PUBLIC_URL +'images/scream.mp4'}>
+              <a href={process.env.PUBLIC_URL +'/images/scream.mp4'}>
                 Buy Now
               </a>
             </div>
@@ -251,7 +251,7 @@ useEffect(()=>{
             <div className="health_carousel-container" style={{padding: '50px'}}>
               <div className="card" style={{background: 'black', borderRadius: '50px',paddingBottom: '10px'}}>
                 <div className="card-body">
-                  <h5 className="card-title" style={{color:'#00ffff'}}><img src={imgurl+post.userImg} style={{height:'30px',width:'30px',borderRadius:'10px'}} alt={process.env.PUBLIC_URL+'images/client.png'}/>{post.username}</h5>
+                  <h5 className="card-title" style={{color:'#00ffff'}}><img src={imgurl+post.userImg} style={{height:'30px',width:'30px',borderRadius:'10px'}} alt={process.env.PUBLIC_URL+'/images/client.png'}/>{post.username}</h5>
                   <p className="card-text" style={{color: 'white',paddingLeft:'50px'}}>{post.content}
                   </p>
                 </div>
@@ -271,7 +271,7 @@ useEffect(()=>{
                   {user ? (<div className="like p-2 cursor"><i className="fa fa-commenting-o"></i><span className="ml-1" data-toggle="modal" data-target="#Comments" onClick={()=>{dispatch(setPostID(post.id)); }}>Comment</span></div>):(<div className="like p-2 cursor"><i className="fa fa-commenting-o"></i><span className="ml-1" data-toggle="modal" data-target="#Comments" onClick={()=>{alert('You Need to login/register to comment');nav('/login') }}>Comment</span></div>)}
                   <div className="like p-2 cursor"><i className="fa fa-share"></i><span className="ml-1">Share</span></div>
   {/* RIGHT HERE !  */}
-                  <div className="like p-2 cursor"><img src={process.env.PUBLIC_URL+'images/headphones.png'}  style={{maxHeight:'20px',maxWidth:'20px',borderRadius:'2px',width:'auto',height:'auto'}} alt="" onClick={()=>{let player = new Audio(imgurl+post.audio);player.play()}}/></div>
+                  <div className="like p-2 cursor"><img src={process.env.PUBLIC_URL+'/images/headphones.png'}  style={{maxHeight:'20px',maxWidth:'20px',borderRadius:'2px',width:'auto',height:'auto'}} alt="" onClick={()=>{let player = new Audio(imgurl+post.audio);player.play()}}/></div>
   {/*               */}
                   </div>
                   </div>

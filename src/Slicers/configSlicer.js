@@ -2,7 +2,7 @@ import {  createSlice } from "@reduxjs/toolkit";
 const initialState = {
     config1: {headers:{'Content-Type':'application/json'}},
     config2:{headers:{'Content-Type':'application/json',Authorization:'Bearer '+localStorage.getItem('token')}},
-    url : 'http://127.0.0.1:8000/media/'
+    url : 'https://n2mu-server.herokuapp.com/media/'
 };
  
 export const configSlice = createSlice({

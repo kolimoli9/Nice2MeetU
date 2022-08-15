@@ -3,6 +3,7 @@ import {BrowserRouter,Routes, Route} from 'react-router-dom'
 import Nav from "./comp/Nav";
 import Login from './comp/Login'
 import Home from "./comp/Home";
+import PageNotFound from './comp/PageNotFound'
 function App() {
   return (
     <div className="App">

@@ -7,10 +7,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
+        <Routes> 
           <Route path='/' element={<Nav/>}>
             <Route index element={<Home/>}/>
             <Route path="login/" element={<Login/>}/>
+            <Route path="*" element={<PageNotFound/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

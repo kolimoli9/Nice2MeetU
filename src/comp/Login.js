@@ -16,7 +16,7 @@ const login = async()=>{
       username:username,
       password:password
     })
-    axios.post('https://n2mu-server.herokuapp.com/login/',data,config).then((response)=>{
+    axios.post('https://n2mu-sr.azurewebsites.net/login/',data,config).then((response)=>{
       if(response.status===200){
       localStorage.setItem('token',JSON.stringify(response.data.access));
       let decodedToken = jwt_decode(response.data.access);
@@ -44,7 +44,7 @@ const register = async()=>{
   data.append('email',Email)
   data.append('img',ProfileImg)  
   let config = {headers:{'Content-Type':'multipart/form-data'}}
-  axios.post('https://n2mu-server.herokuapp.com/register/',data,config).then((response)=>{if(response.status===200){
+  axios.post('https://n2mu-sr.azurewebsites.net/register/',data,config).then((response)=>{if(response.status===200){
     alert(response.data.output+'\nYou can Login now.')
     window.location.href='/login'
     

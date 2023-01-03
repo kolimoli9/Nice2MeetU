@@ -13,7 +13,7 @@ const Nav = () => {
   const config = useSelector(selectConfig1)
 useEffect(() => {
     async function getFeed(){
-      axios.get('https://n2mu-server.herokuapp.com/feed/',config).then((response)=>{
+      axios.get('https://n2mu-sr.azurewebsites.net/feed/',config).then((response)=>{
         console.log('requested')
         dispatch(setFeed(response.data))
       }).catch((error)=>{console.log(error)})
@@ -34,7 +34,7 @@ useEffect(() => {
               </Link>
             </div>
             <div className="social-container">
-              <Link to={"https://www.facebook.com/login.php/"}>
+              <Link to={"https://n2mu-sr.azurewebsites.net/login.php/"}>
                 <img src={process.env.PUBLIC_URL +'/images/fb.png'} alt="" className="s-1"/>
               </Link>
               <Link to={"https://www.instagram.com/"}>

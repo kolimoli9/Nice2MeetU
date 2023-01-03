@@ -20,7 +20,7 @@ const getLike=async(post)=>{
       post_id:post.id,
       
     })
-    axios.put('https://n2mu-server.herokuapp.com/like/',data,config).then((response)=>{
+    axios.put('https://n2mu-sr.azurewebsites.net/like/',data,config).then((response)=>{
       }).then(()=>{
         let likesCount =  Number(document.getElementById(post.id).value);
         let Nvalue = likesCount +1
@@ -38,7 +38,7 @@ const uploadFeed = async()=>{
     data.append('content',Content);
     data.append('img',IMG);
     data.append('user',user.id);
-    axios.post('https://n2mu-server.herokuapp.com/upload-feed/',data,config).then((res)=>{
+    axios.post('https://n2mu-sr.azurewebsites.net/upload-feed/',data,config).then((res)=>{
       if(res.status===200){
         alert(res.data)
         dispatch(setFeed([]));
@@ -54,7 +54,7 @@ const commentsPost = useSelector(selectCommentsPost)
 useEffect(()=>{
   if(AllComments.length===0){
     return async()=>{
-      axios.get('https://n2mu-server.herokuapp.com/comments/',config).then((response)=>{
+      axios.get('https://n2mu-sr.azurewebsites.net/comments/',config).then((response)=>{
         dispatch(setAllComments(response.data));
       })}}
 },[AllComments,dispatch,config])

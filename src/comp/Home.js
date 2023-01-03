@@ -18,6 +18,7 @@ const Home = () => {
 const getLike=async(post)=>{
     let data = JSON.stringify({
       post_id:post.id,
+      
     })
     axios.put('https://n2mu-server.herokuapp.com/like/',data,config).then((response)=>{
       }).then(()=>{

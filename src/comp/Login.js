@@ -46,7 +46,7 @@ const register = async()=>{
   let config = {headers:{'Content-Type':'multipart/form-data'}}
   axios.post('https://n2mu-sr.azurewebsites.net/register/',data,config).then((response)=>{if(response.status===200){
     alert(response.data.output+'\nYou can Login now.')
-    window.location.href='/login'
+    nav('/login')
     
   }}).catch((error)=>alert(error))
 }
